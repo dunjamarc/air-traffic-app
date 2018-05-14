@@ -1,0 +1,30 @@
+header {
+    border-bottom: 1px solid rgb(170, 169, 169);
+    text-align: center;
+    padding: 20px 0;
+}
+
+main {
+    background: url('https://imagesvc.timeincapp.com/v3/mm/image?url=http%3A%2F%2Fcdn-image.travelandleisure.com%2Fsites%2Fdefault%2Ffiles%2Fstyles%2F1600x1000%2Fpublic%2F1457466232%2Fairplane-trails0316.jpg%3Fitok%3Dg0isIa5Z&w=700&q=85');
+    background-size: cover;
+}
+
+img.icon {
+    height: 50px;
+    width: auto;
+    float: right;
+    margin: 15px;
+}
+
+.card-panel {
+    padding: 5px 15px;
+}
+
+img.logo {
+    float: left;
+}
+
+.dropdown {
+    border-top: 1px solid rgb(201, 201, 201);
+    text-align: center;
+}
