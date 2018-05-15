@@ -18,11 +18,13 @@ const displayFlights = flight => {
     card.setAttribute("class","card-panel");
     icon.setAttribute("class","icon");
     icon.setAttribute("src","https://cdn4.iconfinder.com/data/icons/eldorado-transport/40/plane-512.png");
+    link.setAttribute("id", flight.id);
     dropdown.setAttribute("class","dropdown");
     logo.setAttribute("class","logo");
-    logo.setAttribute("src",`https://logo.clearbit.com/${flight.operator}.com?s=128`);
+    let company = flight.operator.toLowerCase().split(' ').join('');
+    logo.setAttribute("src",`https://logo.clearbit.com/${company}.com?s=128`);
 
-    altitude.innerHTML = `Altitude: ${flight.altitude}`;
+    altitude.innerHTML = `Altitude: ${flight.altitude} ft`;
     num.innerHTML = `Flight code number: ${flight.id}`;
     man.innerHTML = `Manufacturer: ${flight.man}`;
     model.innerHTML = `Model: ${flight.model}`;
@@ -35,13 +37,15 @@ const displayFlights = flight => {
     dropdown.appendChild(destination);
     dropdown.appendChild(origin);
     link.appendChild(icon);
+    link.appendChild(altitude);
+    link.appendChild(num);
     card.appendChild(link);
-    card.appendChild(altitude);
-    card.appendChild(num);
     card.appendChild(dropdown);
     wrapper.appendChild(card);
 
     document.querySelector('.row').appendChild(wrapper);
+
+    
 }
 
 export default displayFlights;

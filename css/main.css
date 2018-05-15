@@ -1,12 +1,13 @@
 header {
-    border-bottom: 1px solid rgb(170, 169, 169);
+    box-shadow: 0px 9px 10px -5px rgba(0, 0, 0, 0.295);
     text-align: center;
     padding: 20px 0;
+    position: relative;
 }
 
 main {
-    background: url('https://imagesvc.timeincapp.com/v3/mm/image?url=http%3A%2F%2Fcdn-image.travelandleisure.com%2Fsites%2Fdefault%2Ffiles%2Fstyles%2F1600x1000%2Fpublic%2F1457466232%2Fairplane-trails0316.jpg%3Fitok%3Dg0isIa5Z&w=700&q=85');
-    background-size: cover;
+    background-color: rgb(157, 184, 190);
+    padding-top: 15px;
 }
 
 img.icon {
@@ -14,17 +15,43 @@ img.icon {
     width: auto;
     float: right;
     margin: 15px;
+    right: 150px;
+    position: relative;
+    transition: right .7s;
+}
+
+@media only screen and (max-width: 768px){
+    img.icon {
+        right: 0;
+    }
+}
+
+img.icon.move {
+    right: 0;
 }
 
 .card-panel {
-    padding: 5px 15px;
+    padding: 5px 15px 0 15px;
 }
 
 img.logo {
     float: left;
+    margin-top: 15px;
 }
 
 .dropdown {
     border-top: 1px solid rgb(201, 201, 201);
     text-align: center;
+    transition: max-height .7s;
+    max-height: 0;
+    overflow: hidden;
+}
+
+.dropdown.show {
+    max-height: 230px;
+}
+
+a {
+    cursor: pointer;
+    color: #000;
 }
