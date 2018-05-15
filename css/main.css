@@ -1,3 +1,6 @@
+html, body {
+    height: 100%;
+}
 
 header {
     box-shadow: 0px 7px 10px -5px rgba(0, 0, 0, 0.295);
@@ -13,6 +16,13 @@ h4 {
 main {
     background-color: rgb(157, 184, 190);
     padding-top: 15px;
+    height: auto;
+    min-height: 100% !important;
+}
+
+a {
+    cursor: pointer;
+    color: #000;
 }
 
 img.icon {
@@ -22,6 +32,9 @@ img.icon {
     margin: 15px;
     right: 150px;
     position: relative;
+    -webkit-transition: right .7s;
+	-moz-transition: right .7s;
+	-o-transition: right .7s;
     transition: right .7s;
     opacity: .8;
 }
@@ -50,6 +63,9 @@ img.logo {
 .dropdown {
     border-top: 1px solid rgb(201, 201, 201);
     text-align: center;
+    -webkit-transition: max-height .7s;
+	-moz-transition: max-height .7s;
+	-o-transition: max-height .7s;
     transition: max-height .7s;
     max-height: 0;
     overflow: hidden;
@@ -57,11 +73,6 @@ img.logo {
 
 .dropdown.show {
     max-height: 230px;
-}
-
-a {
-    cursor: pointer;
-    color: #000;
 }
 
 #error {
