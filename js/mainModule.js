@@ -1,8 +1,8 @@
 import createFlight from './dataModule.js';
 import displayFlights from './UIModule.js';
 
-const createProperty = (obj, key, val) => {
-    obj.forEach(el => {
+const createProperty = (arr, key, val) => {
+    arr.forEach(el => {
         if (!el.hasOwnProperty(key)) {
             Object.defineProperty(el, key, {
                 value: val,
@@ -12,7 +12,7 @@ const createProperty = (obj, key, val) => {
             });
         }
     })
-    return obj;
+    return arr;
 }
 
 const fetchData = (request) => {
@@ -22,7 +22,12 @@ const fetchData = (request) => {
         .then((data) => {
             let allFlights = data.acList;
             createProperty(allFlights, 'Alt', 0);
+            createProperty(allFlights, 'Man', 'No Information');
+            createProperty(allFlights, 'Mdl', 'No Information');
+            createProperty(allFlights, 'To', 'No Information');
+            createProperty(allFlights, 'From', 'No Information');
 
+            //sort by altitude
             for (var i = 1; i < allFlights.length; i++) {
                 let tmp = allFlights[i].Alt;
                 for (var j = i - 1; j >= 0 && (allFlights[j].Alt < tmp); j--) {
@@ -30,8 +35,6 @@ const fetchData = (request) => {
                 }
                 allFlights[j + 1].Alt = tmp;
             }
-
-            console.log(allFlights);
             
             allFlights.forEach(flight => {
                 const singleFlight = createFlight(flight.Alt, flight.Id, flight.Man, flight.Mdl, flight.To, flight.From, flight.Op);
@@ -43,6 +46,9 @@ const fetchData = (request) => {
                 }
             })
         })
+        .catch(error => {
+            document.getElementById('error').setAttribute("style", "display: block;");
+        })  
 }
 
 const initSingleFlight = () => {
@@ -56,13 +62,11 @@ const initSingleFlight = () => {
     let longitude = 0;
     
     navigator.geolocation.getCurrentPosition(position => {
-        console.log(position);
         
         latitude = position.coords.latitude;
         longitude = position.coords.longitude;
 
     }, error);
-    
 
     const singleFlightRequest = `http://public-api.adsbexchange.com/VirtualRadar/AircraftList.json?lat=${latitude}&lng=${longitude}&fDstL=0&fDstU=100`;
 
@@ -72,6 +76,5 @@ const initSingleFlight = () => {
         fetchData(singleFlightRequest);
     }, 60000);
 }
-
 
 export default initSingleFlight;

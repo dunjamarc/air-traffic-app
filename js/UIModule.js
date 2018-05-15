@@ -21,10 +21,11 @@ const displayFlights = flight => {
     link.setAttribute("id", flight.id);
     dropdown.setAttribute("class","dropdown");
     logo.setAttribute("class","logo");
+
     let company = "";
-    if(flight.hasOwnProperty('Op')){
+    if(flight.hasOwnProperty('operator') && flight.operator !== undefined){
         let query = flight.operator.toLowerCase().split(' ').join('');
-        company = `https://logo.clearbit.com/${company}.com?s=128`;
+        company = `https://logo.clearbit.com/${query}.com?s=128`;
     } else {
         company = 'https://www.freeiconspng.com/uploads/airplane-png-33.png';
     }
@@ -51,7 +52,6 @@ const displayFlights = flight => {
 
     document.querySelector('.row').appendChild(wrapper);
 
-    
 }
 
 export default displayFlights;
