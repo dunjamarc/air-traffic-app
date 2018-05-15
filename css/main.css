@@ -35,6 +35,8 @@ img.icon.move {
 }
 
 img.logo {
+    width: auto;
+    max-height: 150px;
     float: left;
     margin-top: 15px;
 }

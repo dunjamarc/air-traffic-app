@@ -21,8 +21,14 @@ const displayFlights = flight => {
     link.setAttribute("id", flight.id);
     dropdown.setAttribute("class","dropdown");
     logo.setAttribute("class","logo");
-    let company = flight.operator.toLowerCase().split(' ').join('');
-    logo.setAttribute("src",`https://logo.clearbit.com/${company}.com?s=128`);
+    let company = "";
+    if(flight.hasOwnProperty('Op')){
+        let query = flight.operator.toLowerCase().split(' ').join('');
+        company = `https://logo.clearbit.com/${company}.com?s=128`;
+    } else {
+        company = 'https://www.freeiconspng.com/uploads/airplane-png-33.png';
+    }
+    logo.setAttribute("src", company);
 
     altitude.innerHTML = `Altitude: ${flight.altitude} ft`;
     num.innerHTML = `Flight code number: ${flight.id}`;
